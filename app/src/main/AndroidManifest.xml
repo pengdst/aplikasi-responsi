@@ -10,6 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ResponsiFintech">
         <activity
+            android:name=".ui.recovery.RecoveryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.register.RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
