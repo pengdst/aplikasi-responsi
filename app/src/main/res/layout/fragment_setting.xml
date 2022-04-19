@@ -6,6 +6,7 @@
     tools:context=".ui.main.setting.SettingFragment">
 
     <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinner_theme_mode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:entries="@array/menus_darkmode"
