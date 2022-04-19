@@ -20,12 +20,11 @@ class RecoveryActivity : AppCompatActivity() {
             btnResetPassword.setOnClickListener {
                 val email = tilEmail.editText?.text?.toString()
 
-                tilEmail.error = if (!email.isNullOrEmpty()) "Email cannot empty".also {
-                    return@setOnClickListener
-                } else null
+                tilEmail.error = if (email.isNullOrEmpty()) "Email cannot empty" else null
+                if (email.isNullOrEmpty()) return@setOnClickListener
 
                 Intent(applicationContext, MainActivity::class.java).also {
-                    startActivity(it)
+                    onBackPressed()
                 }
             }
         }

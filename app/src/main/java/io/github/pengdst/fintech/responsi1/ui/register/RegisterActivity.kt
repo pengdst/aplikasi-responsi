@@ -23,18 +23,16 @@ class RegisterActivity : AppCompatActivity() {
                 val password = tilPassword.editText?.text?.toString()
                 val confirmPassword = tilConfirmPassword.editText?.text?.toString()
 
-                tilEmail.error = if (!email.isNullOrEmpty()) "Email cannot empty".also {
-                    return@setOnClickListener
-                } else null
-                tilPassword.error = if (!password.isNullOrEmpty()) "Password cannot empty".also {
-                    return@setOnClickListener
-                } else null
-                tilConfirmPassword.error = if (password != confirmPassword ) "Password and confirmation Password didn't match".also {
-                    return@setOnClickListener
-                } else null
+                tilEmail.error = if (email.isNullOrEmpty()) "Email cannot empty" else null
+                tilPassword.error = if (password.isNullOrEmpty()) "Password cannot empty" else null
+                tilConfirmPassword.error = if ((password != confirmPassword) || confirmPassword.isNullOrEmpty()) "Password and confirmation Password didn't match" else null
+                if (email.isNullOrEmpty() || password.isNullOrEmpty() || password != confirmPassword) return@setOnClickListener
 
-                Intent(applicationContext, MainActivity::class.java).also {
+                Intent(applicationContext, MainActivity::class.java).apply {
+                    flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                }.also {
                     startActivity(it)
+                    finish()
                 }
             }
         }
